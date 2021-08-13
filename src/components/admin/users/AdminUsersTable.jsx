@@ -9,7 +9,7 @@ function AdminUsersTable(props) {
                     <tr>
                         <th scope='col'>#</th>
                         <th scope='col'>Nombres</th>
-                        <th scope='col'>Apellidos</th>
+                        <th scope='col'>Email</th>
                         <th scope='col'>Rol</th>
                         <th scope='col'>Acciones</th>
                     </tr>
