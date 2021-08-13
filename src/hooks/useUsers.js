@@ -14,7 +14,11 @@ function useUsers() {
         const res = await usersApi.getUsers()
         console.log(res.message)
         if (res.data) {
-            dispatch(getUsers(res.data))
+            const dispatchData = res.data.map(user => {
+                delete user.password
+                return user
+            })
+            dispatch(getUsers(dispatchData))
         }
         setLoading(false)
     }

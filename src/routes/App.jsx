@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Redirect, Route, Switch, } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom'
 // Components
 import AdminBooks from 'components/admin/books/AdminBooks'
 import AdminMenu from 'components/admin/AdminMenu'
@@ -16,13 +16,11 @@ import UserProfile from 'pages/UserProfile'
 import AdminRoute from 'routes/AdminRoute'
 import PrivateRoute from 'routes/PrivateRoute'
 import useToken from 'hooks/useToken'
-import AdminUserCRUD from 'components/admin/users/AdminUserCRUD'
 
 function App() {
-    const { loading, auth } = useToken()
+    const { loading } = useToken()
 
     if (loading) return <Loading />
-    if (!auth) return <Redirect to push='/home' />
 
     return (
         <Router>
@@ -35,13 +33,7 @@ function App() {
                     <PrivateRoute exact path='/book/:bookId' component={BookInfo} />
                     <AdminRoute exact path='/admin' component={AdminMenu} />
                     <AdminRoute exact path='/admin/users/' component={AdminUsers} />
-                    <AdminRoute exact path='/admin/users/create/' component={AdminUserCRUD} />
-                    <AdminRoute exact path='/admin/users/update/:userId' component={AdminUserCRUD} />
-                    <AdminRoute exact path='/admin/users/delete/:userId' component={AdminUserCRUD} />
                     <AdminRoute exact path='/admin/books' component={AdminBooks} />
-                    <AdminRoute exact path='/admin/books/create/' component={AdminBooks} />
-                    <AdminRoute exact path='/admin/books/update/:userId' component={AdminBooks} />
-                    <AdminRoute exact path='/admin/users/delete/:userId' component={AdminBooks} />
                     <PrivateRoute component={NotFound} />
                 </Switch>
             </Layout>
