@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function CardAdmin(props) {
     const { children, title, route } = props
     return (
-        <article className='card text-white bg-dark mb-3'>
+        <article className='card text-white bg-dark mb-5'>
             <div className='card-header text-center'>{children}</div>
             <div className='card-body'>
                 <h5 className='card-title text-center'>{title}</h5>

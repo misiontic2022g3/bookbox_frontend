@@ -14,16 +14,16 @@ function UserProfile(props) {
     const { user } = props
 
     return (
-        <main className='container'>
+        <main className='container-fluid mx-0 px-0'>
             <HeaderPage
                 title={`Bienvenido,
                 ${user?.firstName ? `${user.firstName} ${user.lastName}` : ''}`}
             />
-            <div>
+            <div className='container'>
                 <h2>Mis Libros</h2>
                 <UserBooksContainer />
             </div>
-            <div>
+            <div className='container'>
                 <h2>Todos los libros</h2>
                 <BooksContainer />
             </div>

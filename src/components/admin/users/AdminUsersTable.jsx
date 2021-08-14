@@ -3,7 +3,7 @@ import AdminUserRow from './AdminUserRow'
 function AdminUsersTable(props) {
     const { users } = props
     return (
-        <section className='mx-2'>
+        <section className='container'>
             <table className='table table-striped table-hover'>
                 <thead>
                     <tr>

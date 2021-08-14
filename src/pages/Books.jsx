@@ -3,8 +3,9 @@ import HeaderPage from 'components/misc/HeaderPage'
 
 function Books() {
     return (
-        <main className='container'>
-            <HeaderPage title='Libros'>
+        <main className='container-fluid mx-0 px-0'>
+            <HeaderPage title='Libros' />
+            <section className='container'>
                 {/* <form className='d-flex'>
                     <input
                         type='search'
@@ -15,8 +16,8 @@ function Books() {
                         Buscar
                     </button>
                 </form> */}
-            </HeaderPage>
             <BooksContainer />
+            </section>
         </main>
     )
 }

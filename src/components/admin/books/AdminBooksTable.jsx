@@ -3,7 +3,7 @@ import AdminBookRow from 'components/admin/books/AdminBookRow'
 function AdminBooksTable(props) {
     const { books } = props
     return (
-        <section className='mx-2'>
+        <section className='container'>
             <table className='table table-striped table-hover'>
                 <thead>
                     <tr>

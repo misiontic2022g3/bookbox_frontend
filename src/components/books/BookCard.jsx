@@ -4,7 +4,7 @@ function BookCard(props) {
     const { _id, title, cover, description } = props.book
     return (
         <article className='col'>
-            <div className='card bg-dark text-light mb-3 card-book'>
+            <div className='card bg-dark text-light mb-5 card-book'>
                 <div className='row g-0'>
                     <div className='col-md-4 card-book-img'>
                         <img

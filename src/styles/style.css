@@ -11498,6 +11498,10 @@ fieldset:disabled .btn {
   }
 }
 
+body {
+  background-color: #ffd8a6a3 !important;
+}
+
 .bg-books {
   background-color: wheat;
 }

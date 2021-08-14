@@ -1,6 +1,9 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 // @import './scss/error.scss';
+body {
+    background-color: #ffd8a6a3 !important;
+}
 
 .bg-books {
     background-color: wheat;

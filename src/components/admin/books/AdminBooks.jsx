@@ -13,7 +13,7 @@ function AdminBooks() {
     if (loading) return <Loading />
 
     return (
-        <main className='container'>
+        <main className='container-fluid mx-0 px-0'>
             <HeaderPage title='Administación de libros'>
                 <Link to='/admin' className='btn btn-outline-dark mx-3'>
                     Atras

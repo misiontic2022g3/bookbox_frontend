@@ -3,9 +3,11 @@ import UserBooksContainer from 'components/books/UserBooksContainer'
 
 function MyBooks() {
     return (
-        <main className='container'>
+        <main className='container-fluid mx-0 px-0'>
             <HeaderPage title='Mis Libros' />
-            <UserBooksContainer />
+            <section className='container'>
+                <UserBooksContainer />
+            </section>
         </main>
     )
 }

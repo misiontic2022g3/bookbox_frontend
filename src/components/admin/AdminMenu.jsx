@@ -3,9 +3,9 @@ import CardAdmin from 'components/admin/CardAdmin'
 
 function AdminMenu() {
     return (
-        <main className='container'>
+        <main className='container-fluid mx-0 px-0'>
             <HeaderPage title='Administración' />
-            <section>
+            <section className='container'>
                 <div className='row row-cols-1 row-cols-md-2 g-4'>
                     <div className='col'>
                         <CardAdmin title='Libros' route='/admin/books'>
