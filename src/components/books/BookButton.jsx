@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router'
 
 import { setUserBook, deleteUserBook } from 'actions'
 import UserBooksApi from 'services/userBooks.service'
@@ -18,6 +19,7 @@ const mapDispatchToProps = {
 }
 
 function BookButton(props) {
+    const history = useHistory()
     const { myBooks, bookId } = props
     const { _id: userId } = props.user
 
@@ -47,6 +49,7 @@ function BookButton(props) {
                 userId,
             })
             console.log(createdUserBookId.message, createdUserBookId.data)
+            history.push('/my-books')
         }
     }
 
@@ -57,6 +60,7 @@ function BookButton(props) {
         if (deletedUserBookId) {
             props.deleteUserBook(deletedUserBookId.data)
             console.log(deletedUserBookId.message, deletedUserBookId.data)
+            history.push('/my-books')
         }
     }
 

@@ -7,6 +7,7 @@ import { getBooks, getUserBooks } from 'actions'
 
 import BookCard from 'components/books/BookCard'
 import Loading from 'components/misc/Loading'
+import { Link } from 'react-router-dom'
 
 const mapStateToProps = state => {
     return {
@@ -72,13 +73,21 @@ function UserBooksContainer(props) {
 
     if (loading) return <Loading />
 
+    if (!myBooksData.length)
+        return (
+            <article className='text-center m-4 justify-content-center'>
+                <h1>Ups!</h1>
+                <h2>No tienes libros aún</h2>
+                <Link className='btn btn-warning' to='/books'>Agrega Libros</Link>
+            </article>
+        )
+
     return (
         <section className='row row-cols-1 row-cols-md-2 g-4'>
-            {myBooksData ? (
-                myBooksData.map(book => <BookCard key={book._id} book={book} />)
-            ) : (
-                <p>No tienes libros aun...</p>
-            )}
+            {myBooksData?.length &&
+                myBooksData.map(book => (
+                    <BookCard key={book._id} book={book} />
+                ))}
         </section>
     )
 }
