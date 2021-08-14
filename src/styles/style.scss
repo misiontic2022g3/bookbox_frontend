@@ -1,15 +1,38 @@
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
-
-// @import './scss/error.scss';
 body {
     background-color: #ffd8a6a3 !important;
 }
+
+$dark: #293737;
 
 .bg-books {
     background-color: wheat;
     // background-image: url('../assets/books-icon.svg');
     // background-size: 150px;
 }
+
+.carousel-container-img {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 75vh;
+    // background: rgb(255, 214, 0);
+    // background: linear-gradient(
+    //     0deg,
+    //     rgba(255, 214, 0, 1) 0%,
+    //     rgba(240, 174, 67, 1) 33%,
+    //     rgba(255, 162, 0, 1) 100%
+    // );
+    display: grid;
+    place-content: center;
+}
+
+.carousel-img {
+    height: 60vh;
+}
+
+// .carousel-img::after {
+//     width: 100vw;
+// }
 
 .tag-input {
     display: flex;
@@ -92,3 +115,5 @@ body {
     height: 170px;
     overflow: hidden;
 }
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
