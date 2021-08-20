@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { Modal } from 'react-bootstrap'
+import useAlerts from 'hooks/useAlerts'
 
 import BooksApi from 'services/books.service'
 import { deleteBook } from 'actions'
@@ -12,6 +13,7 @@ const mapDispatchToProps = {
 function AdminBookDeleteModal(props) {
     const { _id, title, author, description, cover } = props.book
     const [show, setShow] = useState(false)
+    const { Toast } = useAlerts()
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
@@ -21,7 +23,11 @@ function AdminBookDeleteModal(props) {
         const deletedBookId = await booksApi.deleteBook({ bookId: _id })
         if (deletedBookId) {
             props.deleteBook(deletedBookId.data)
-            console.log(deletedBookId.message, deletedBookId.data)
+            console.log(deletedBookId.message, deletedBookId.data)  
+            Toast.fire({
+            icon: 'success',
+            title: 'Libro eliminado!'
+            })
         }
         handleClose()
     }

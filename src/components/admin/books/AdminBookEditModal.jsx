@@ -6,6 +6,7 @@ import BookForm from 'components/admin/books/BookForm'
 
 import BooksApi from 'services/books.service'
 import { setBook, updateBook } from 'actions'
+import useAlerts from 'hooks/useAlerts'
 
 const mapDispatchToProps = {
     setBook,
@@ -27,14 +28,15 @@ function AdminBookEditModal(props) {
         isNew
             ? emptyForm
             : {
-                  title: book.title,
-                  author: book.author,
-                  description: book.description,
-                  date: book.date,
-                  cover: book.cover,
-                  tags: book.tags,
-              }
+                title: book.title,
+                author: book.author,
+                description: book.description,
+                date: book.date,
+                cover: book.cover,
+                tags: book.tags,
+            }
     )
+    const { Toast } = useAlerts()
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
@@ -56,6 +58,11 @@ function AdminBookEditModal(props) {
             props.setBook({ _id: createdBookId.data, ...form })
             console.log(createdBookId.message, createdBookId.data)
             setForm(emptyForm)
+            Toast.fire({
+                icon: 'success',
+                title: 'Libro creado!'
+                })
+
         }
     }
 
@@ -67,6 +74,10 @@ function AdminBookEditModal(props) {
         if (updatedBookId) {
             props.updateBook({ _id: updatedBookId.data, ...form })
             console.log(updatedBookId.message, updatedBookId.data)
+            Toast.fire({
+                icon: 'success',
+                title: 'Libro actualizado!'
+                })
         }
     }
 

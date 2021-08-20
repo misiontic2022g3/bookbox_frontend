@@ -4,6 +4,7 @@ import { Modal } from 'react-bootstrap'
 
 import UsersApi from 'services/users.service'
 import { deleteUser } from 'actions'
+import useAlerts from 'hooks/useAlerts'
 
 const mapDispatchToProps = {
     deleteUser,
@@ -12,6 +13,7 @@ const mapDispatchToProps = {
 function AdminUserDeleteModal(props) {
     const { _id, firstName, lastName, isAdmin } = props.user
     const [show, setShow] = useState(false)
+    const { Toast } = useAlerts()
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
@@ -23,6 +25,10 @@ function AdminUserDeleteModal(props) {
         if (deletedUserId) {
             props.deleteUser(deletedUserId.data)
             console.log(deletedUserId.message, deletedUserId.data)
+            Toast.fire({
+                icon: 'success',
+                title: 'Usuario eliminado!'
+                })
         }
         handleClose()
     }

@@ -6,6 +6,7 @@ import UserForm from 'components/admin/users/UserForm'
 import UsersApi from 'services/users.service'
 import { setUser, updateUser } from 'actions'
 import { connect } from 'react-redux'
+import useAlerts from 'hooks/useAlerts'
 
 const mapDispatchToProps = {
     setUser,
@@ -29,14 +30,15 @@ function AdminUserEditModal(props) {
         isNew
             ? emptyForm
             : {
-                  email: user.email,
-                  firstName: user.firstName,
-                  lastName: user.lastName,
-                  isAdmin: user.isAdmin,
-                  password: '',
-                  repeatPassword: '',
-              }
+                email: user.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                isAdmin: user.isAdmin,
+                password: '',
+                repeatPassword: '',
+            }
     )
+    const { Toast } = useAlerts()
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
@@ -50,7 +52,6 @@ function AdminUserEditModal(props) {
         }
 
         delete form.repeatPassword
-        
         if (isNew) {
             createUser(usersApi)
         } else {
@@ -66,6 +67,10 @@ function AdminUserEditModal(props) {
             props.setUser({ _id: createdUserId.data, ...form })
             console.log(createdUserId.message, createdUserId.data)
             setForm(emptyForm)
+            Toast.fire({
+                icon: 'success',
+                title: 'Usuario creado!'
+                })
         }
     }
 
@@ -77,6 +82,10 @@ function AdminUserEditModal(props) {
         if (updatedUserId) {
             props.updateUser({ _id: updatedUserId.data, ...form })
             console.log(updatedUserId.message, updatedUserId.data)
+            Toast.fire({
+                icon: 'success',
+                title: 'Usuario actualizado!'
+                })
         }
     }
 

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router'
 import { setUserBook, deleteUserBook } from 'actions'
 import UserBooksApi from 'services/userBooks.service'
 import Loading from 'components/misc/Loading'
+import useAlerts from 'hooks/useAlerts'
 
 const mapStateToProps = state => {
     return {
@@ -26,6 +27,7 @@ function BookButton(props) {
     const [loading, setLoading] = useState(true)
     const [userBookId, setUserBookId] = useState(null)
     const [style, setStyle] = useState('warning')
+    const { Toast } = useAlerts()
 
     const setStateUserBookId = id => {
         if (id) {
@@ -49,6 +51,10 @@ function BookButton(props) {
                 userId,
             })
             console.log(createdUserBookId.message, createdUserBookId.data)
+            Toast.fire({
+                icon: 'success',
+                title: 'Libro agregado a favoritos!'
+                })
             history.push('/my-books')
         }
     }
@@ -60,6 +66,10 @@ function BookButton(props) {
         if (deletedUserBookId) {
             props.deleteUserBook(deletedUserBookId.data)
             console.log(deletedUserBookId.message, deletedUserBookId.data)
+            Toast.fire({
+                icon: 'success',
+                title: 'Libro eliminado de favoritos!'
+                })
             history.push('/my-books')
         }
     }

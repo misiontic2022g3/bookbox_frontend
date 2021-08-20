@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+// import { useHistory } from 'react-router-dom'
 import jwt from 'jsonwebtoken'
 
 import { loginRequest } from 'actions'
 import AuthApi from 'services/auth.service'
 
 function useToken() {
+    // const history = useHistory()
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
-    
     const reloadSession = async () => {
         console.log('Verifying token status...')
         if (window.localStorage.getItem('tokenSession')) {
@@ -35,6 +36,7 @@ function useToken() {
     const tokenExpired = () => {
         console.log('Token expired or non-existent')
         setLoading(false)
+        // history.push('/home')
     }
 
     const tokenRequest = async () => {
